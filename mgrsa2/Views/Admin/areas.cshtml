@@ -1,0 +1,101 @@
+﻿@model Areas
+
+@{
+    ViewBag.Title = "EAM-Areas";
+}
+
+<!--Page content-->
+<!--===================================================-->
+
+
+<div class="row">
+
+    <div class="col">
+
+        <div class="panel">
+            
+            <div class="panel-container show p-md-5">
+
+                <!-- datatable start -->
+
+
+                @if (Model.areas.Count == 0)
+                {
+                    <div class="card">
+                        <div class="card-body text-center bg-warning">
+                            <i class="far fa-map d-block display-2"></i>
+                        </div>
+                        <div class="p-1 text-center">
+                            <p class="text-semibold text-lg text-main text-uppercase">@*AREAS*@</p>
+                            <p class="h1 text-thin mar-no">0</p>
+                            <p class="text-sm text-overflow pad-top">
+                                <span class="text-bold">NO</span> datos encontrados
+                            </p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                    <table id="tbAreas" class="table table-hover table-striped w-100 table-no-bordered" cellspacing="0" style="width:100%">
+                        <thead  class="bg-primary-50">
+                            <tr>
+                                <th>Abrev</th>
+                                <th>Descripcion</th>
+                                <th>Area Id</th>
+                                @*<th></th>*@
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbRows">
+                            @foreach (Area area in Model.areas)
+                            {
+                                <tr>
+                                    <td>@area.Abrev</td>
+                                    <td>@area.Descripcion</td>
+                                    <td>@area.areaID</td>
+                                    @*<td>
+                                        <a class="btn btn-xs btn-dark" data-toggle="modal" href="#modalArea" data-edicionid="@area.areaID"><i class="fa fa-edit"></i> Routes</a>
+                                      </td>*@
+
+                                </tr>
+                            }
+                        </tbody>
+
+
+                    </table>
+
+
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+
+
+    <script src="~/assets/jseam/area.js"  asp-append-version="true"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            PageTitle('pageTitle', 'fa-2x fal fa-map-marker-alt', 'Areas', 'Coverage Areas');
+
+            $("#" + AreaG.settingsTable.id).DataTable(AreaG.settingsTable.config);
+
+            var uinit = AreaG.bindUIActions();          
+
+        });
+
+    </script>
+
+}
+
+
+

@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "EAM-Acceso NO permitido";
+}
+
+<div class="lock-container">
+    <div>
+
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="ion ion-md-key fa-3x py-5 text-secondary"></i>
+                <br />
+                <h1 class="text-warning">ACCESO NO PERMITIDO</h1>
+                <br/>
+                <h4>
+                    <span class="text-info">@(string.Format("{0:t}", DateTime.Now))</span>
+                    <strong>@(string.Format("{0:D}", DateTime.Today))</strong>
+                </h4>
+                <p class="text-muted">
+                    Manager System v19 asp.net c2 ms sql
+                </p>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Secciones";
+}
+
+<!--Page content-->
+<!--===================================================-->
+<div class="container-fluid flex-grow-1 container-p-y bg-ca-grey-transparent-3">
+    
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-1 pull-right py-1">
+            <button class="btn btn-info btn-sm" title="Refresh" id="btnRefresh"><i class="ion ion-ios-search"></i>&nbsp;Actualizar</button>
+        </div>
+        <div class="col-md-1 pull-right py-1">
+            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalItm" data-id="0" data-descripcion="NUEVA SECCION"><i class="ion ion-ios-add"></i>&nbsp;Add</button>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+
+            <div id="divSecc"></div>
+
+
+        </div>
+     </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalItm">
+    <div class="modal-dialog">
+        <div class="modal-content">            
+                <div class="modal-header py-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h5 class="modal-title text-ca-blue-darker" id="modalTitle">Secciones</h5>
+                </div>            
+                <div class="modal-body bg-light">
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="seccionId" class="form-label form-label-sm">Id</label>
+                                    <input id="seccionId" class="form-control form-control-sm text-uppercase" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="seccion" class="form-label form-label-sm">Descripcion</label>
+                                    <input id="seccion" class="form-control form-control-sm text-uppercase" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group col-sm-4" id="divActiva">
+                                    <label class="custom-control custom-checkbox d-block">
+                                        <input type="checkbox" class="custom-control-input" id="activa">
+                                        <span class="custom-control-label form-label-sm">Activa</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="orden" class="form-label form-label-sm">Orden</label>
+                                    <input id="orden" class="form-control form-control-sm text-uppercase" />
+                                </div>
+                            </div>
+                        </div>
+                   
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-sm pull-right " data-dismiss="modal"><i class="fa fa-close" id="btnClose"></i> Close</button>
+                    <button class="btn btn-success btn-sm pull-right mx-2" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+@section scripts{
+
+
+    <script src="~/assets/jseam/seccion.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            PageTitle('pageTitle', 'fas fa-bars', 'Secciones', 'Clasificacion General de Articulos');
+
+            $('html').addClass('layout-collapsed');
+            
+            var uinit = SeccG.bindUIActions();
+            
+            var uinit = SeccG.Search();
+
+        });
+
+    </script>
+
+}
+
+
+

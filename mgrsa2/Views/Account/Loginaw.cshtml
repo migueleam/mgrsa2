@@ -1,0 +1,164 @@
+﻿@model LoginModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en" class="default-style">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+
+    <title>ElAvi v19</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/ionicons.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/linearicons.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/open-iconic.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/pe-icon-7-stroke.css">
+    <!-- Core stylesheets -->
+    <!-- Material -->
+    @*<link rel="stylesheet" href="~/assets/vendor/css/bootstrap-material.css" class="theme-settings-bootstrap-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/appwork-material.css" class="theme-settings-appwork-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/theme-corporate-material.css" class="theme-settings-theme-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/colors-material.css" class="theme-settings-colors-css">
+    *@   
+    
+    <!-- Default -->
+
+    <link rel="stylesheet" href="~/assets/vendor/css/bootstrap.css" class="theme-settings-bootstrap-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/appwork.css" class="theme-settings-appwork-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/theme-soft.css" class="theme-settings-theme-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/colors.css" class="theme-settings-colors-css">
+
+
+    <link rel="stylesheet" href="~/assets/vendor/css/uikit.css">
+
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.css">
+
+    <link rel="stylesheet" href="~/assets/css/demo.css">
+    <link rel="stylesheet" href="~/assets/css/extras.css">
+    <script src="~/assets/vendor/js/material-ripple.js"></script>
+    @*<script src="~/assets/vendor/js/layout-helpers.js"></script>*@
+
+
+    <!-- Theme settings -->
+    <!-- This file MUST be included after core stylesheets and layout-helpers.js in the <head> section -->
+    @*<script src="~/assets/vendor/js/theme-settings.js"></script>*@
+    @*<script>
+            window.themeSettings = new ThemeSettings({
+                cssPath: '../assets/vendor/css/rtl/',
+                themesPath: '../assets/vendor/css/rtl/'
+            });
+        </script>*@
+
+
+    <!-- Core scripts -->
+    <script src="~/assets/vendor/js/pace.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Libs -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <!-- Page -->
+    <link rel="stylesheet" href="~/assets/vendor/css/pages/authentication.css">
+
+</head>
+
+
+
+<body class="bg-secondary-darker">
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="authentication-wrapper authentication-2 ui-bg-cover ui-bg-overlay-container px-4"
+         style="background-image: url('assets/img/bg/1.jpg');">
+        <div class="ui-bg-overlay bg-ca-gradient-blue opacity-25"></div>
+        <div class="authentication-inner py-5">
+            <div class="card">
+                <div class="p-1 p-sm-5">
+                    <!-- Logo -->
+                    <div class="text-center">
+                        <img src="~/assets/elaviso2.png" class="img-responsive mx-auto" style="width:90px;height:auto" />
+                        <div><i class="text-primary lnr lnr-book fa-3x py-2"></i></div>
+                        <h3 class="text-secondary mt-3 text-expanded">Acc-Pay</h3>
+                        <small>ver 19.1</small>    
+                    </div>
+
+                    <!-- / Logo -->
+                    <!-- Form -->
+                    <form asp-action="Login" method="post" class="my-5">
+                        <div class="form-group">
+                            <label class="form-label form-label-sm" asp-for="Username">Nombre del Usuario</label>
+                            <input asp-for="Username" class="form-control" placeholder="Usuario" autofocus />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label form-label-sm" asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" placeholder="Contraseña" />
+                        </div>
+                        <div class="d-flex align-items-center m-0">
+                            <button type="submit" class="btn btn-primary mx-auto"><i class="ion ion-md-key"></i>  Entrar</button>
+                        </div>
+                    </form>
+                    <!-- / Form -->
+                    <p class="m-t text-center text-dark">
+                        <small>Accounting-Payable &copy; 2019</small>
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- / Content -->
+    <!-- Core scripts -->
+    <script src="~/assets/vendor/libs/popper/popper.js"></script>
+    @*<script src="~/assets/vendor/js/bootstrap.js"></script>*@
+    <script src="~/assets/vendor/js/sidenav.js"></script>
+
+    <script src="~/assets/vendor/js/material-ripple.js"></script>
+    <!-- Libs -->
+    <script src="~/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.js"></script>
+    <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <!-- Demo -->
+    @*<script src="~/assets/js/demo.js"></script>*@
+    <script src="~/assets/jseam/common6.js"></script>
+
+    <script>
+
+        window.attachMaterialRippleOnLoad();
+
+        $(document).ready(function () {
+
+            "use strict";
+            const smsg = '@Model.resp.message';
+
+            if (smsg !== undefined && smsg !== 'inicio') {
+                let amsg = ('@Model.resp.message').split('|');
+                const msg = {
+                    TypeMsg : amsg[0],
+                    message : amsg[1],
+                    title : amsg[2]
+                };
+                Mensaje(msg);
+            }
+
+        });
+
+    </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "EAM-Contact";
+}
+
+
+<div class="container-fluid flex-grow-1 container-p-y">
+
+   
+    <div class="row">
+        <div class="col-lg-6 col-xl-6 order-lg-1 order-xl-1 mx-auto m-5">
+            <!-- profile summary -->
+            <div class="card mb-g rounded-top">
+                <div class="row no-gutters row-grid">
+                    <div class="col-12">
+                        <div class="d-flex flex-column align-items-center justify-content-center p-4">
+                            @*<img src="~/assets/img/1.png" class="rounded-circle shadow-2 img-thumbnail" alt="">*@
+                            <i class="fa-4x far fa-cubes text-ca-blue-darker"></i>
+
+                            <h5 class="mb-0 fw-700 text-center mt-3">
+                                Miguel A Santiago
+                                <small class="text-muted mb-0">Bell, CA</small>
+                            </h5>
+                            <div class="mt-4 text-center">
+                                <div class="contact-content-user text-muted small mb-2">@@msantiago</div>
+                                <div class="contact-content-user text-ca-orange h6 mb-2 font-bold">desarrollador .net</div>
+
+                                <div class="text-left">
+                                    <strong class="text-danger">Oficina Principal</strong>
+                                    <br> tel (626) 586-9199
+                                    <br> ext 147
+                                    <br> cel (626) 216-9044
+                                </div>
+                            </div>
+
+
+                            <div class="mt-4 text-center demo">
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#3b5998">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#38A1F3">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#db3236">
+                                    <i class="fab fa-google-plus"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#0077B5">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                @*<a href="javascript:void(0);" class="fs-xl" style="color:#000000">
+                                    <i class="fab fa-reddit-alien"></i>
+                                </a>*@
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#00AFF0">
+                                    <i class="fab fa-skype"></i>
+                                </a>
+                                @*<a href="javascript:void(0);" class="fs-xl" style="color:#0063DC">
+                                    <i class="fab fa-flickr"></i>
+                                </a>*@
+                            </div>
+                        </div>
+                    </div>
+                   
+                    @*<div class="col-12">
+                        <div class="p-3 text-center">
+                            <a href="javascript:void(0);" class="btn-link font-weight-bold">Follow</a> <span class="text-primary d-inline-block mx-3">●</span>
+                            <a href="javascript:void(0);" class="btn-link font-weight-bold">Message</a> <span class="text-primary d-inline-block mx-3">●</span>
+                            <a href="javascript:void(0);" class="btn-link font-weight-bold">Connect</a>
+                        </div>
+                    </div>
+                    *@
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+</div>
+                @section scripts {
+
+                    <script>
+
+                        $(document).ready(function () {
+
+                            PageTitle('pageTitle', 'fa-2x fal fa-user-alt', 'Home', 'Contact');
+
+                        });
+
+                    </script>
+
+                }
+

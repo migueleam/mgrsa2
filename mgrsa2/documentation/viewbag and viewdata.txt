@@ -1,0 +1,60 @@
+
+https://www.tektutorialshub.com/viewbag-viewdata-asp-net-core/
+
+public IActionResult Index()
+{
+    ViewData["Greeting"] = "Hello World";
+    ViewData["Product"] = new ProductModel()
+    {
+        ProductID=1,
+        Name = "Samsung galaxy Note",
+        Brand = "Samsung",
+        Price = 19000
+    };
+         
+    return View();
+}
+ 
+
+@{
+    // Since Product isn't a string, it requires a cast.
+    var product = ViewData["Product"] as ProductModel;
+}
+
+@ViewData["Greeting"]!
+
+@product.ProductID<br>
+@product.Name<br>
+@product.Brand<br>
+@product.Price<br>
+
+
+
+
+@{
+    // Since Product isn't a string, it requires a cast.
+    var product = ViewData["Product"] as ProductModel;
+}
+
+@ViewData["Greeting"]!
+
+@product.ProductID<br>
+@product.Name<br>
+@product.Brand<br>
+@product.Price<br>
+
+
+
+@{
+    // Since Product isn't a string, it requires a cast.
+    var product = ViewData["Product"] as ProductModel;
+}
+
+@ViewData["Greeting"]!
+
+@product.ProductID<br>
+@product.Name<br>
+@product.Brand<br>
+@product.Price<br>
+
+

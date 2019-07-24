@@ -1,0 +1,30 @@
+https://stackoverflow.com/questions/29836342/mvc-6-httppostedfilebase
+
+
+There is no HttpPostedFileBase in MVC6. You can use IFormFile instead.
+
+Example: https://github.com/aspnet/Mvc/blob/dev/test/WebSites/ModelBindingWebSite/Controllers/FileUploadController.cs
+
+Snippet from the above link:
+
+public FileDetails UploadSingle(IFormFile file)
+{
+    FileDetails fileDetails;
+    using (var reader = new StreamReader(file.OpenReadStream()))
+    {
+        var fileContent = reader.ReadToEnd();
+        var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+        fileDetails = new FileDetails
+        {
+            Filename = parsedContentDisposition.FileName,
+            Content = fileContent
+        };
+    }
+
+    return fileDetails;
+}
+
+
+msn file Uploads in ASP.NET Core...
+
+https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-2.1

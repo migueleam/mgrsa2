@@ -1,0 +1,48 @@
+var url = 'https://example.com/profile';
+var data = {username: 'example'};
+
+fetch(url, {
+  method: 'POST', // or 'PUT'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{
+    'Content-Type': 'application/json'
+  }
+}).then(res => res.json())
+.then(response => console.log('Success:', JSON.stringify(response)))
+.catch(error => console.error('Error:', error));
+
+
+
+
+let wordnikAPI =   "https://api.wordnik.com/v4/words.json/randomWord?minLength=5&maxLength=-1&api_key=....";
+let giphyAPI = "https://api.giphy/com/vi1/gifs/search...";
+ 
+
+function setup(){
+
+	noCanvas();
+	wordGIF().
+		then(results => {
+			createP(results.word);
+			createImag(results.img);		
+	}).
+	catch(err => console.error(err));
+
+}
+
+
+
+
+async function wordGIF() {
+	let response1 = await fetch(wordnikAPI);
+	let json1 = await response1.json();
+	let response2 = await fetch(giphyAPI + json1.word);
+	let json2 = await response2.json();
+	let img_url = json2.data[0].images['fixed_height_small'].url;
+	return {
+		word: json1.word,
+		img: img_url
+	}
+
+}
+

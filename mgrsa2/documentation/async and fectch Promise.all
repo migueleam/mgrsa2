@@ -1,0 +1,74 @@
+let wordnikAPI =   "https://api.wordnik.com/v4/words.json/randomWord?api_key=....";
+let giphyAPI = "https://api.giphy/com/vi1/gifs/search...";
+ 
+
+function setup(){
+
+	noCanvas();
+	wordGIF().
+		then(results => {
+			createP(results.word);
+			createImag(results.img);		
+	}).
+	catch(err => console.error(err));
+
+}
+
+
+
+
+async function wordGIF() {
+	let response1 = await fetch(wordnikAPI);
+	let json1 = await response1.json();
+	let response2 = await fetch(giphyAPI + json1.word);
+	let json2 = await response2.json();
+	let img_url = json2.data[0].images['fixed_height_small'].url;
+	return {
+		word: json1.word,
+		img: img_url
+	}
+
+}
+
+
+//Promsies.all
+
+function setup(){
+
+	noCanvas();
+	let promises = [wordGIF(8), wordGIF(4), wordGIF(5)];
+
+	Promises.all(promises)
+		.then((results => {
+		promises.forEach(res in results){
+			createP(res.word);
+			if (res.img !== null) {
+				createImg(res.img);
+			}
+		}
+		})
+		.catch((err) => console.log(err));
+		
+	}	
+}
+
+async function wordGIF(num) {
+	let response1 = await fetch(wordnikAPI + `&minLength=${num}&maxLength=${num}`);
+	let json1 = await response1.json();
+	let response2 = await fetch(giphyAPI + json1.word);
+	let json2 = await response2.json();
+	let img_url = null;
+	try {
+		let img_url = json2.data[0].images['fixed_height_small'].url;
+	}
+	catch (err) {
+		console.log(err)
+	}
+	return {
+		word: json1.word,
+		img: img_url
+	}
+
+}
+
+

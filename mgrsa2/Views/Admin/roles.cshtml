@@ -1,0 +1,196 @@
+﻿
+@model UserRoleForm
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+    <div class="row">
+        <div class="col  py-1 text-right">
+            <a class="btn btn-success btn-sm" data-toggle="modal" href="#modalRol" data-roleid="0"><i class="fal fa-plus"></i> New Role</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <div class="panel">
+                <div class="panel-container show p-md-5">
+                    @*<form id="frmUsers" asp-antiforgery="true" asp-action="users">*@
+
+                    @if (Model.roles.Count() == 0) 
+                    {
+                        <div class="card">
+                            <div class="card-body text-center bg-light">
+                                <i class="ion ion-ios-person d-block display-3"></i>
+                            </div>
+                            <div class="p-1 text-center">
+                                <p class="text-semibold text-lg text-main text-uppercase">ROLES</p>
+                                <p class="h1 text-thin mar-no">0</p>
+                                <p class="text-sm text-overflow pad-top">
+                                    <span class="text-bold">NO</span> datos encontrados
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                     
+                         <table id="tbRolesAdm" class="table table-hover table-striped w-100 table-no-bordered" style="width:100%">
+                                <thead class="bg-primary-50">
+                                    <tr>
+                                        @*<th>Id</th>*@
+                                        
+                                        <th>Grupo</th>
+                                        <th>Role</th>
+                                        <th>Active</th>
+                                        <th>Id</th>
+                                        <th>Inicial</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbRows">
+                                    @foreach (RoleExt r in Model.roles)
+                                    {
+                                    <tr>
+
+                                        @*<td>@r.Id</td>*@
+                                        <td>@r.Group</td>
+                                        <td>@r.Name</td>
+
+                                        <td>
+
+                                            <div class="custom-control custom-checkbox text-center">
+                                                <input type="checkbox" class="custom-control-input custom-control-pink"  disabled @(r.Active ? "checked" : "") id='@("active" + r.Id)'>
+                                                <label class="custom-control-label" for='@("active" + r.Id)'></label>
+                                            </div>
+
+                                            <span class="d-none">@r.Active</span>
+
+                                        </td>
+                                        <td>@r.Id</td>
+                                        <td>@r.RoleInitial</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-xs btn-info" data-toggle="modal" href="#modalRol" data-roleid="@r.Id"><i class="fal fa-edit"></i></a>
+                                        </td>
+
+                                    </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>
+                                                   
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade show" id="modalRol" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-ca-silver-transparent-8">              
+                <h4 class="modal-title text-ca-pink-darker" id="disTitle">
+                    <i class="fal fa-cog"></i>
+                    ROLE
+                    <small class="m-0 text-muted">
+                        Información básica
+                    </small>                    
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col">
+
+                        <div class="form-group">
+                            <label class="form-label form-label-sm">Id</label>
+                            <input id="roleId" class="form-control form-control-sm" disabled />
+                        </div>
+                       
+                        <div class="row my-1">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="form-label form-label-sm">Nombre</label>
+                                    <input id="NombreRole" class="form-control form-control-sm" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div id="divnombreroles" class="p-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label form-label-sm">Role Inicial</label>
+                            <input id="RoleInicial" class="form-control form-control-sm" />
+                        </div>
+
+                        <div class="form-group">
+                            <div id="divRolesGps"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="ActivoRole">
+                                <span class="custom-control-label">Activo</span>
+                            </label>
+                        </div>
+                       
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-success btn-sm" id="btnUpdate"><span class="fa fa-save"></span> Save</button>
+                <button class="btn btn-default btn-sm" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+
+            </div>
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+
+
+
+@section scripts{
+ 
+    <script src="~/assets/jseam/roles.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            PageTitle('pageTitle', 'fa-2x fal fa-cog', 'Roles', 'Roles in operation');  
+
+            $("#" + RolesAdm.settingsTable.id).DataTable(RolesAdm.settingsTable.config);
+            
+            if ("@Model.response.route[0].valor" !== "") {
+                  $('.dataTables_filter input').val(@Model.response.route[1].valor);
+            }
+
+            RolesAdm.bindUIActions();
+
+        });
+
+    </script>
+
+}

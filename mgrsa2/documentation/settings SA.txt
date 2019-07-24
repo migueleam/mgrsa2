@@ -1,0 +1,24 @@
+Fixed Navigation:
+	nav-function-fixed blur
+
+Fixed Header
+ 	header-function-fixed
+
+Hide Navigation
+	nav-function-hidden 
+
+Top Navigation
+	mod-bg-1 desktop chrome webkit pace-done nav-function-fixed nav-function-hidden nav-function-top modal-open blur
+
+
+Global Font Size
+	<html lang="en" class="root-text">
+    		root-text-sm,-,lg, xl 
+
+
+
+
+<a href="#" class="header-icon">
+                                <i class="fal fa-cog"></i>
+                            </a>
+

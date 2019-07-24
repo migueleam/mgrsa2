@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "EAM-Locked";
+}
+
+
+
+
+<div class="row mt-lg-5">
+    <div class="col col-md-3"></div>
+    <div class="col align-self-center">
+
+        <div class="panel">
+            <div class="panel-hdr">
+                <h3>
+                    <strong>@(string.Format("{0:D}", DateTime.Now))</strong>
+                    <span class="text-info">@(string.Format("{0:t}", DateTime.Now))</span>
+
+                </h3>
+            </div>
+
+            <div class="panel-container show p-md-5">
+
+                <span class="text-ca-pink flex-1 fs-xxl text-contrast">Locked</span>
+                <i class="fa-4x pe-7s-tools big-icon my-lg-5 text-ca-orange"></i>
+                <br />
+
+                <p class="text-orange">
+                    System Manager v19 asp.net core 2.0 ms-sql
+                </p>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col col-md-3"></div>
+</div>
+
+
+
+
+@section scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+            PageTitle('pageTitle', 'fa-2x fal fa-lock-alt', 'Locked', 'Seccion Locked');
+        });
+    </script>
+
+}

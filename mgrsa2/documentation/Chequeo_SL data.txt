@@ -1,0 +1,35 @@
+SELECT 
+	l.[Location]
+	, sl.*
+	, s.*
+	, r.*
+	FROM dist_ScheduleLocation sl
+	INNER JOIN dist_Location l ON sl.locationID = l.locationID
+	INNER JOIN dist_Schedule s ON sl.scheduleID = s.scheduleID
+	INNER JOIN dist_Route r ON s.routeID = r.routeID
+	where sl.scheduleID = 45 and sl.activa = 1
+	order by sl.Orden desc
+
+
+	Select TOP 10 
+	sl.*,
+	l.*
+	FROM dist_ScheduleLocation sl
+	INNER JOIN dist_Location l ON sl.locationID = l.locationID
+	order by sl.locationScheduleID desc
+
+	Select TOP 10 
+	sl.*,
+	l.*
+	FROM dist_ScheduleLocation sl
+	INNER JOIN dist_Location l ON sl.locationID = l.locationID
+	WHERE l.locationID = 7181 AND sl.scheduleID = 45
+	order by sl.locationScheduleID desc
+	
+
+	SELECT isnull(max(sl.Orden),0)+1
+	FROM dist_ScheduleLocation sl	
+	WHERE sl.scheduleID = 45 and sl.Activa = 1
+
+
+

@@ -1,0 +1,539 @@
+﻿
+
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-collapsed layout-offcanvas" dir="ltr">
+
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/ionicons.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/linearicons.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/open-iconic.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/pe-icon-7-stroke.css">
+    <!-- Core stylesheets -->
+    <!-- Material -->
+    <link rel="stylesheet" href="~/assets/vendor/css/bootstrap.css" class="theme-settings-bootstrap-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/appwork.css" class="theme-settings-appwork-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/theme-soft.css" class="theme-settings-theme-css">
+    <link rel="stylesheet" href="~/assets/vendor/css/colors.css" class="theme-settings-colors-css">
+
+    <!-- Default -->
+    @*
+        <link rel="stylesheet" href="~/assets/vendor/css/bootstrap.css" class="theme-settings-bootstrap-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/appwork.css" class="theme-settings-appwork-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/theme-corporate.css" class="theme-settings-theme-css">
+        <link rel="stylesheet" href="~/assets/vendor/css/colors.css" class="theme-settings-colors-css">
+    *@
+
+
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/uikit.css">
+    <link rel="stylesheet" href="~/assets/css/demo.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/scroller/1.5.1/css/scroller.dataTables.min.css" />
+
+    <script src="~/assets/vendor/js/material-ripple.js"></script>
+    <script src="~/assets/vendor/js/layout-helpers.js"></script>
+
+    <!-- Core scripts -->
+    <script src="~/assets/vendor/js/pace.js"></script>
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables/datatables.css">
+
+    <link href="~/assets/vendor/libs/datatablesCA/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/assets/vendor/libs/select2/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/spinkit/spinkit.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/toastr/toastr.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.css">
+    <link href="~/assets/vendor/libs/jasny/jasny-bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/timepicker/timepicker.css">
+
+    <link href="~/assets/vendor/libs/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/assets/css/extras.css" />
+    <link rel="stylesheet" href="~/assets/css/demo.css" />
+
+
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables/select.dataTables.min.css"/>
+     
+    @RenderSection("styles", required: false)
+
+</head>
+
+<body>
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-2 ">
+
+        <div class="layout-inner">
+
+            <!-- Layout sidenav -->
+            <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-sidenav-theme">
+                <!-- Brand demo (see assets/css/demo/demo.css) -->
+                <div class="demo-brand m-3 mx-auto text-success">
+                    <i class="lnr lnr-book"></i>&nbsp;
+                    <a href="~/home" class="demo-brand-name sidenav-text text-large text-success">
+                        ACC<span>-PAY</span>
+                    </a>
+                </div>
+
+                <!-- Links -->
+                <ul class="sidenav-inner py-1">
+
+                    <!-- Utilidades / Auxiliares -->
+
+                    <li class="sidenav-divider mb-1"></li>
+                    <!-- Ordenes -->
+                    <li class="sidenav-item open">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon fas fa-columns"></i>
+                            <div>Reportes</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a asp-controller="task" asp-action="task" class="sidenav-link">
+                                    <i class="sidenav-icon oi oi-document"></i>
+                                    <div>Facturas</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                   
+                    <!-- Auxiliares -->
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-md-build"></i>
+                            <div>Auxiliares</div>
+                        </a>
+                        <ul class="sidenav-menu">
+
+                            <li class="sidenav-item">
+                                <a asp-controller="admin" asp-action="areas" class="sidenav-link">
+                                    <i class="sidenav-icon pe-7s-map"></i>
+                                    <div>Areas</div>
+                                </a>
+                            </li>
+
+                            <li class="sidenav-item">
+                                <a asp-controller="admin" asp-action="ediciones" class="sidenav-link">
+                                    <i class="sidenav-icon pe-7s-clock"></i>
+                                    <div>Ediciones</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="sidenav-divider mb-1"></li>
+
+
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon pe-7s-info"></i>
+                            <div>Información</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a asp-controller="home" asp-action="index" class="sidenav-link">
+                                    <i class="sidenav-icon pe-7s-home"></i>
+                                    <div>El Aviso Mag</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a asp-controller="home" asp-action="contact" class="sidenav-link">
+                                    <i class="sidenav-icon pe-7s-user"></i>
+                                    <div>Contacto</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a asp-controller="home" asp-action="about" class="sidenav-link">
+                                    <i class="sidenav-icon pe-7s-info"></i>
+                                    <div>Sistema</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- / Layout sidenav -->
+            <!-- Layout container -->
+            <div class="layout-container">
+                <!-- Layout navbar -->
+                <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center container-p-x bg-success-darker navbar-dark" id="layout-navbar">
+                    <!-- Brand demo (see assets/css/demo/demo.css) -->
+                    @*<a href="~/home/index" class="navbar-brand demo-brand d-lg-none py-0">
+                            eam<span class="text-primary">Mgr</span>
+                        </a>*@
+                    <!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+                    <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+                        <a class="nav-item nav-link px-0 ml-2 ml-lg-0" href="javascript:void(0)">
+                            <i class="ion ion-md-menu text-large align-middle"></i>
+                        </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse" id="sidebarToggle">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="pageTitle"></div>
+
+
+                    <div class="navbar-collapse collapse" id="layout-navbar-collapse">
+
+                        <!-- Divider -->
+                        <hr class="d-lg-none w-100 my-2">
+                        <div class="navbar-nav align-items-lg-center ml-auto">
+
+                            <div id="pageSummary" class="media-body"></div>
+
+                            <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
+
+                            <div class="demo-navbar-notifications nav-item dropdown mr-lg-3">
+                                <a class="nav-link hide-arrow" href="#" data-toggle="modal" data-target="#modals-slide" title="Directorio">
+                                    <i class="fas fa-th d-block navbar-icon align-middle"></i>
+                                </a>
+                            </div>
+
+                            <!-- Divider -->
+                            <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
+                            <div class="demo-navbar-user nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+                                        <img src="~/assets/1.png" alt="Usuario" class="d-block ui-w-30 rounded-circle">
+                                        <span class="px-1 mr-lg-2 ml-2 ml-lg-0 text-expanded">@User.Identity.Name</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+
+                                    <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#modalProfile" title="Profile">
+                                        <i class="ion ion-ios-person text-lightest"></i> &nbsp; Mi perfil
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#modalAuth" title="Profile">
+                                        <i class="ion ion-md-key text-lightest"></i> &nbsp;Actualización
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a asp-controller="account" asp-action="logout" class="dropdown-item">
+                                        <i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- / Layout navbar -->
+                <!-- Layout content -->
+                <div class="layout-content">
+
+                    <div class="mx-auto text-dark d-none" id="iboxLoading">
+                        <div class="sk-double-bounce sk-primary">
+                            <div class="sk-child sk-double-bounce1"></div>
+                            <div class="sk-child sk-double-bounce2"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- Content -->
+
+                    @RenderBody()
+
+
+                    <!-- begin scroll to top btn -->
+                    <a href="javascript:;" class="btn btn-circle btn-md btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="ion ion-ios-arrow-up"></i></a>
+                    <!-- end scroll to top btn -->
+                    <!--===================================================-->
+                    <!-- / Content -->
+                    <!-- Layout footer -->
+                    <nav class="layout-footer footer bg-dark footer-dark">
+                        <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+                            <div class="pull-right pt-3">
+                                Accounting<strong class="text-primary">Payable</strong> v19v1
+                            </div>
+                            <div class="text-white pt-3">
+                                <strong class="text-white-50">ElAviso</strong><span class="text-ca-pink-lighter">Magazine</span> &copy; 2019
+                            </div>
+                        </div>
+                    </nav>
+
+                    <!-- / Layout footer -->
+
+                </div>
+                <!-- Layout content -->
+            </div>
+            <!-- / Layout container -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+
+        <!-- Modal template -->
+        <div class="modal modal-slide fade" id="modals-slide">
+
+            <div class="modal-dialog">
+
+                <form class="modal-content">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+
+                    <div class="bg-lighter">
+                        <div>
+                            <ul class="nav nav-tabs bg-ca-white">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#listaDir">
+                                        Directorio<span class="text-danger">&nbsp;eam&nbsp;</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#listaOficinas">
+                                        Oficinas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+
+                            <div id="listaDir" class="tab-pane fade active show ">
+
+                                <div class="m-3 p-2 bg-white">
+                                    <!-- Search -->
+                                    <label class="nav-item navbar-text navbar-search-box p-0 active">
+                                        <i class="ion ion-ios-search navbar-icon align-middle"></i>
+                                        <span class="navbar-search-input pl-2">
+                                            <input type="text" class="form-control navbar-text mx-2" placeholder="Ingrese su búqueda..." id="searchDir">
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!--Directorio-->
+
+                                <div class="list-group bg-trans mt-2">
+                                    <div id="directoryWidget">
+                                        @await Component.InvokeAsync("DirectoryWidget", new { search = "" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="listaOficinas" class="tab-pane fade ">
+
+                                <div class="card-body mt-2">
+                                    <h5>
+                                        Instalaciones<br />
+                                        <span class="text-muted text-tiny">Ofinas LA, Orange, San Fdo Counties e IE</span>
+                                    </h5>
+                                </div>
+
+                                <div class="card-body p-4 m-4 bg-white">
+
+                                    <h6 class=" text-danger">
+                                        Corporativa
+                                    </h6>
+                                    <h6 class="text-dark">
+                                        4850 Gave Ave<br />
+                                        Bell, CA 90201
+                                    </h6>
+                                    <span> (323) 586-9199 </span>
+
+                                </div>
+                                <div class="card-body p-4 m-4 bg-white">
+
+                                    <h6 class=" text-info">
+                                        San Fernando
+                                    </h6>
+                                    <h6 class="text-dark">
+                                        12970 Branford St. Unit "C"<br />
+                                        Arleta, CA 91331
+                                    </h6>
+                                    <span>(818) 766-1999</span>
+
+                                </div>
+
+                                <div class="card-body p-4 m-4 bg-white">
+
+                                    <h6 class=" text-warning">
+                                        Orange County
+                                    </h6>
+                                    <h6 class="text-dark">
+                                        1524 W. 5th St.<br />
+                                        Santa Ana, CA 92703
+                                    </h6>
+                                    <span>(714) 263-0399</span>
+
+                                </div>
+
+                                <div class="card-body p-4 m-4 bg-white">
+
+                                    <h6 class=" text-linux">
+                                        Inland Empire
+                                    </h6>
+                                    <h6 class="text-dark">
+                                        125 N. Laurel Ave.<br />
+                                        Ontario, CA 91762
+                                    </h6>
+                                    <span>(909) 509-4098</span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        @Html.Partial("myprof")
+
+
+    </div>
+    <!-- / Layout wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Core scripts -->
+    <script src="~/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/assets/vendor/js/sidenav.js"></script>
+
+    <!-- Libs -->
+    <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/assets/vendor/libs/datatables/datatables.js"></script>
+    <script src="~/assets/vendor/libs/datatablesCA/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+    <script src="~/assets/vendor/libs/datatables/dataTables.select.min.js"></script>
+
+
+    <script src="~/assets/vendor/libs/select2/select2.js"></script>
+    <script src="~/assets/vendor/libs/toastr/toastr.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.js"></script>
+
+    <script src="~/assets/vendor/libs/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/assets/js/fnFindCellRowIndexes.js"></script>
+
+    <script src="~/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/assets/vendor/libs/timepicker/timepicker.js"></script>
+    <!-- Libs -->
+    <script src="~/assets/vendor/libs/slimscroll/jquery.slimscroll.min.js"></script>
+
+
+    <!-- for intra...-->
+    <script src="~/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="~/assets/vendor/libs/jspdf/jspdf.min.js"></script>
+    <script src="~/assets/vendor/libs/jspdf/jspdf.plugin.autotable.js"></script>
+
+    <!-- mask-->
+    <script src="~/assets/vendor/libs/masked-input/jquery.maskedinput.min.js"></script>
+
+    <script src="~/assets/vendor/libs/numeral/numeral.js"></script>
+
+
+
+    <!-- Demo -->
+    <script src="~/assets/js/demo.js"></script>
+
+    <script src="~/assets/jseam/common.js"></script>
+    <script src="~/assets/jseam/common6.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            $('body.canvas-menu .sidebar-collapse').slimScroll({
+                height: '100%',
+                railOpacity: 0.9
+            });
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "preventDuplicates": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "2000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            //$('.fecha').datepicker({
+            //    todayHighlight: true,
+            //    //keyboardNavigation: false,
+            //    forceParse: false,
+            //    calendarWeeks: true,
+            //    autoclose: true
+            //});
+            
+            $('.selectpicker').selectpicker({
+                iconBase: 'fa',
+                tickIcon: 'fa-check'
+            });
+
+            $('.selectpicker').selectpicker('render');
+
+
+            let cm = CommonG.init();
+
+            $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+
+            $(document).scroll(function () {
+                var totalScroll = $(document).scrollTop();
+
+                if (totalScroll >= 200) {
+                    $('[data-click=scroll-top]').addClass('showc');
+                } else {
+                    $('[data-click=scroll-top]').removeClass('showc');
+                }
+            });
+
+            $('[data-click=scroll-top]').click(function (e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("body").offset().top
+                }, 500);
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,430 @@
+"use strict";
+
+var ArtG = {
+
+    settingsTable: {
+        id: "tbArts",
+        container: "divArts",
+        config: {
+            "order": [
+                [2,"asc"],
+                [4,"asc"],
+                [6,"asc"]
+            ],
+            "pagingType": ["full_numbers"],
+            "pageLength": 12,
+            "lengthMenu": [[5, 10, 15, 25, -1], [5, 10, 15, 25, "All"]],
+            "responsive": true,
+            "select": true,
+            "paging": true,
+            "bFilter": true
+            ,
+            "bInfo": true
+            , "columnDefs": [
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [2],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [4],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [6],
+                    "visible": false,
+                    "searchable": false
+                }
+            ]
+        }
+    },
+
+    PrepareClass: function () {
+
+        $('#divSeccion').html('');
+        $('#divSscTipo').html('');
+
+        CommonG.HttpSelect2('/admin/GetSecciones', false, 'Secciones', 'Secciones', 'divSeccion', 'Seccion', 'seccionId', '', '', 'modalItm', false, true, 'let px = ArtG.GetSubSeccionSel(this);'); //, '', '', '', '', '', '', false, '1');                             
+        CommonG.HttpSelect2('/admin/GetSscTipos', false, 'Tipo SubSecc', 'TipoSubSec', 'divSscTipo', 'Tipo Sub-Seccion', 'sscTipoId', '', '', 'modalItm', false, true); //, '', '', '', '', '', '', false, '1');
+
+        $('#seccionId').val('0');
+        $('#seccionId').trigger('change');
+        $('#sscTipoId').val('0');
+        $('#sscTipoId').trigger('change');
+
+        $('#edicionIngreso').val($('#edicionIngresoS').val());
+    },
+
+
+    GetItm: function (id) {
+        
+        http('/admin/GetArticulon'
+            , 'POST'
+            , {
+                "Id": id //notaFUId
+            }
+            , true           
+            , 'ArtG.PopulateSSecc'
+            , 'R'
+        );
+
+
+    },
+
+    PrepareSearch: function () {
+
+        $('#divSeccionS').html('');     
+        $('#divSscTipoS').html('');
+
+        //let pxe = CommonG.RequestAjaxSelectPmt('/common/GetEdicionesPmt', 'Edicion', 'Edicion Dist', 'divEdiciones', 'Edicion', 'EdicionId', { "total": 10, "future": 1 }, false, '', false, true, '');                          
+
+        CommonG.HttpSelect2('/common/GetEdicionesPmt', false, 'Ediciones', 'Ediciones', 'divEdicionIngresosS', 'Edicion Ingreso', 'edicionIngresoS', { "total": 2, "future": 2 }, '', '', false, true); //, '', '', '', '', '', '', false, '1');
+        CommonG.HttpSelect2('/admin/GetSecciones', false, 'Secciones', 'Secciones', 'divSeccionS', 'Seccion', 'seccionIdS', '', '', '', false, true, 'let px = ArtG.GetSubSeccionSSel(this);');                             
+        CommonG.HttpSelect2('/admin/GetSscTipos', false, 'Tipo SubSecc', 'TipoSubSec', 'divSscTipoS', 'Tipo Sub-Seccion', 'sscTipoIdS', '', '', '', false, true); //, '', '', '', '', '', '', false, '1');
+
+        $('#seccionIdS').val('0');
+        $('#seccionIdS').trigger('change');    
+        $('#sscTipoIdS').val('0');
+        $('#sscTipoIdS').trigger('change');    
+    },
+
+    GetSubSeccionSSel: function (obj) {
+        $('#divSubSeccionS').html('');
+        let vSeccionId = $(obj).val();
+        let vsscTipoId = $('#sscTipoId').val();
+        CommonG.HttpSelect2('/admin/GetSubSecciones', false, 'Sub-Secciones', 'Sub-Secciones', 'divSubSeccionS', 'Sub-Seccion', 'subSeccionIdS', { "seccionId": vSeccionId, "sscTipoS": vsscTipoId }, '', '', false, true); //, '', '', '', '', '', '', false, '1');           
+    
+        $('#subSeccionIdS').val('0');
+        $('#subSeccionIdS').trigger('change');
+    },
+    
+    PrepareClass: function () {        
+     
+        $('#divSeccion').html('');        
+        $('#divSscTipo').html('');
+ 
+        CommonG.HttpSelect2('/admin/GetSecciones', false, 'Secciones', 'Secciones', 'divSeccion', 'Seccion', 'seccionId', '', '', 'modalItm', false, true, 'let px = ArtG.GetSubSeccionSel(this);'); //, '', '', '', '', '', '', false, '1');                             
+        CommonG.HttpSelect2('/admin/GetSscTipos', false, 'Tipo SubSecc', 'TipoSubSec', 'divSscTipo', 'Tipo Sub-Seccion', 'sscTipoId', '', '', 'modalItm', false, true); //, '', '', '', '', '', '', false, '1');
+
+        $('#seccionId').val('0');
+        $('#seccionId').trigger('change');
+        $('#sscTipoId').val('0');
+        $('#sscTipoId').trigger('change');  
+
+        $('#edicionIngreso').val($('#edicionIngresoS').val());
+    },
+
+    GetSubSeccionSel: function (obj) {
+        $('#divSubSeccion').html('');
+        let vSeccionId = $(obj).val();
+        let vsscTipoId = $('#sscTipoId').val();
+        CommonG.HttpSelect2('/admin/GetSubSecciones', false, 'Sub-Secciones', 'Sub-Secciones', 'divSubSeccion', 'Sub-Seccion', 'subSeccionId', { "seccionId": vSeccionId, "sscTipoS": vsscTipoId }, '', 'modalItm', false, true); //, '', '', '', '', '', '', false, '1');           
+
+        $('#subSeccionId').val('0');
+        $('#subSeccionId').trigger('change');
+    },
+
+    RefreshItm: function () {
+
+        $('#sseccionId').val('0');
+        $('#sseccion').val('');
+        $('#activa').prop('checked', false);
+        $('#orden').val(0.0);
+
+        $('#seccionId').val('1');
+        $('#seccionId').trigger('change');
+        
+        $('#sscTipoId').val('1');
+        $('#sscTipoId').trigger('change');
+        
+    },
+
+    PopulateSSecc: function (data) {
+
+        if (data === null || data.length === 0) {
+            let px = CommonG.Message('wn|No existen datos | Editorial');
+            return;
+        }
+
+        $('#sseccionId').val(data.subSeccionId);
+        $('#sseccion').val(data.subSeccion);
+        $('#seccionId').val(data.seccionId);
+        $('#sscTipoId').val(data.sscTipoId);
+      
+        if (data.activa === 1)
+            $('#activa').prop('checked', true);
+        else
+            $('#activa').prop('checked', false);
+
+        $('#orden').val(data.order);
+        
+    },
+
+    UpdateRow: function (data) {
+
+        if (data.SeccionId !== undefined && data.SeccionId !== 0) {
+
+            CommonG.UpdateRowTable(ArtG.settingsTable.id, data.seccionId, 0, data.sseccion, 1);
+            CommonG.UpdateRowTable(ArtG.settingsTable.id, data.seccionId, 0, data.orden, 3);
+            if ($('#activa:checked').val()) {
+                $('#activa_' + data.seccionId).prop('checked', true);
+            } else {
+                $('#activa_' + data.sseccionId).prop('checked', false);
+            }
+        }      
+        
+        $("#modalItem").modal("hide");
+    },
+
+    Search: function () {
+
+        let vedicion = $('#edicionIngresoS').val();
+        let vseccionId = $('#seccionIdS').val();
+        let vsubSeccionId = $('#subSeccionIdS').val();
+        let vsscTipoId = $('#sscTipoIdS').val();
+        let vsearch = $('#search').val();
+
+        http('/art/ArtJ'
+            , 'POST'
+            , {
+                'edicion': vedicion,
+                'seccionId': vseccionId,
+                'subSeccion': vsubSeccionId,
+                'sscTipoId': vsscTipoId,
+                'search' : vsearch
+            }
+            , true
+            , 'ArtG.RefreshTb'
+            , 'R'
+        );
+
+
+    },
+
+    RefreshTb: function (data) {
+
+        //here
+        let contenido = "";
+      
+        if (data !== null && data.length > 0) {
+
+            contenido =
+                `<div class="card">
+                    <div class="card-datatable table-responsive">
+                        <table id="tbArts" class="table table-striped table-bordered table-hover font80" cellspacing="0" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+
+                                    <th>Seccion</th>
+                                    <th>Sec Ord</th>
+
+                                    <th>Sub-Seccion</th> 
+                                    <th>SSec Ord</th>
+
+                                    <th>sscTipo</th>  
+                                    <th>Ssct Ord</th>
+
+                                    <th>Titulo-SubTitulo</th>  
+                                    <th>Revisado</th>
+                                    <th>Publicado</th>                                   
+
+                                    <th class="text-center">ed/vw</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbRows">`;
+
+            data.forEach(function (itm) {
+                contenido += `<tr>
+                                                        <td>${itm.articuloId}</td>
+
+                                                        <td>${itm.seccion}</td>  
+                                                        <td>${itm.secOrden}</td>
+
+                                                        <td>${itm.subSeccion}</td>                                                        
+                                                        <td>${itm.ssecOrden}</td>
+
+                                                        <td>${itm.sscTipo}</td>  
+                                                        <td>${itm.ssctOrden}</td>                                                        
+                                                        <td><span class="font-weight-bold">${itm.titulo}</span></br>
+                                                            <span class="text-tiny">${itm.subtitulo}</span>
+                                                        </td>  
+                                                     
+                                                        <td>
+                                                            <label class="custom-control custom-checkbox d-block">
+                                                                <input type="checkbox" class="custom-control-input" ${itm.revisado ? "checked" : ""} disabled id="revisado_${itm.articuloId}">
+                                                                    <span class="custom-control-label"></span>
+                                                            </label>
+                                                            <span class="d-none">${itm.revisado}</span>
+                                                        </td>
+
+                                                        <td>
+                                                            <label class="custom-control custom-checkbox d-block">
+                                                                <input type="checkbox" class="custom-control-input" ${itm.publicar ? "checked" : ""} disabled id="publicar_${itm.articuloId}">
+                                                                    <span class="custom-control-label"></span>
+                                                            </label>
+                                                            <span class="d-none">${itm.publicar}</span>
+                                                        </td>
+                                                    
+
+                                                        <td class="text-center">
+                                                            <button class="btn btn-xs btn-info"
+                                                                data-toggle="modal" href="#modalItm"
+                                                                data-articuloid="${itm.articuloId}">
+                                                                <i class="fa fa-edit"></i> Edit
+                                                            </button>
+                                                        </td>
+                                                    </tr>`;
+            });
+
+            contenido += `</tbody>                               
+                                        </table>
+                                     </div>
+                                  </div>`;
+
+        } else {
+
+            contenido =
+                `<div class="row"> 
+                     <div class="col-lg-4"></div>  
+                     <div class="col-lg-4 bg-ca-lime-transparent-4 text-center py-4">  
+                         <i class="fas fa-map fa-4x text-info"></i>  
+                         <div class="p-sm text-center">  
+                             <h2 class="p-t-lg text-uppercase">Secciones</h2>  
+                             <p class="h1 text-thin mar-no">0</p>  
+                             <p class="text-sm text-overflow pad-top">  
+                                 <span class="text-bold">Haga nueva búsqueda</span>  
+                             </p>  
+                         </div>  
+                     </div>  
+                 <div class="col-lg-4"></div>  
+            </div>`;
+        }
+
+        $('#' + ArtG.settingsTable.container).html(contenido);
+        $("#" + ArtG.settingsTable.id).DataTable(ArtG.settingsTable.config);             
+
+    },
+        
+    bindUIActions: function () {
+             
+        $('#modalItm').on('show.bs.modal', function (e) {
+
+            //let sseccionId = $(e.relatedTarget).data('sseccionid') === undefined ? 0 : $(e.relatedTarget).data('sseccionid');
+
+            ArtG.PrepareArt();
+            
+
+            //if (sseccionId > 0) {
+
+            //    $('#sseccionId').val(sseccionId);
+            //    $('#sseccion').val($(e.relatedTarget).data('sseccion'));
+
+            //    let vseccionId = $(e.relatedTarget).data('seccionid');
+            //    let vsscTipoId = $(e.relatedTarget).data('ssctipoid');
+
+            //    $('#seccionId').val(vseccionId);
+            //    $('#seccionId').trigger('change');
+
+            //    $('#sscTipoId').val(vsscTipoId);
+            //    $('#sscTipoId').trigger('change');
+
+            //    $('#orden').val($(e.relatedTarget).data('orden'));
+
+            //    if ($(e.relatedTarget).data('activa')) {
+            //        $('#activa').prop('checked', true);
+            //    } else {
+            //        $('#activa').prop('checked', false);
+            //    }
+
+            //}
+            //else {
+            //    ArtG.RefreshItm();
+            //}
+            
+
+        });
+
+
+        $("#btnSave").on('click', function (event) {
+
+            event.preventDefault();
+
+            //cambiar por solo 
+
+            let varticuloId = $('#articuloId').val();
+            let vedicionIngreso = $('#edicionIngreso').val();          
+            let vrevisado = $('#revisado:checked').val() ? true : false;
+            let vpublicar = $('#publicar:checked').val() ? true : false;
+            let vseccionId = $('#seccionId').val();
+            let vsubSeccionId = $('#subSeccionId').val();
+            let vsscTipoId = $('#sscTipoId').val();
+            let vtitulo = $('#titulo').val();
+            let vsubTitulo = $('#subTitulo').val();
+            let vcontenido = $('#contenido').val();
+            let vrelevancia = $('#relevancia').val();
+            let vnotas = $('#notas').val();
+            let vpalabrasclaves = $('#palabrasClaves').val();
+            
+            if (vseccionId === undefined || vseccionId === null ||
+                vsubSeccionId === undefined || vsubSeccionId === null 
+            ) {                
+                return CommonG.Message("wn| Verifique Info | Editorial");
+            }
+
+            if (varticuloId === null || varticuloId === undefined || varticuloId === "")
+                varticuloId = "0";
+
+
+            http('/art/UpdateArt'
+                , 'POST'
+                , {
+                    "articuloId": varticuloId,
+                    "edicionIngreso": vedicionIngreso,
+                    "revisado": vrevisado,
+                    "publicar": vpublicar,
+
+                    "seccionId": vseccionId,
+                    "subSeccionId": vsubSeccionId,                    
+                    "sscTipoId": vsscTipoId,                    
+
+                    "titulo": vtitulo,
+                    "subTitulo": vsubTitulo,
+                    "contenido": vcontenido,
+                    "relevancia": vrelevancia,
+                    "notas": vnotas,
+                    "palabrasClaves": vpalabrasclaves
+                }
+                , true
+                , 'ArtG.Search'
+                , null
+            );
+            
+        });
+
+        $("#btnRefresh").on('click', function (event) {
+
+            event.preventDefault();
+            ArtG.PrepareSearch();
+        
+        });   
+
+        $("#btnSearch").on('click', function (event) {
+
+            event.preventDefault();          
+            ArtG.Search();
+
+        });  
+
+        ArtG.PrepareSearch();
+
+    }
+
+};

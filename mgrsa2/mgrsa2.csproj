@@ -1,0 +1,189 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <StartupObject>mgrsa2.Program</StartupObject>
+    <ApplicationIcon>wwwroot\assets\img\favicon.ico</ApplicationIcon>
+    <Version>2.0.0</Version>
+    <NeutralLanguage>Spanish</NeutralLanguage>
+    <Copyright>El Aviso Magazine</Copyright>
+    <Description>Tareas e Ideas v2018</Description>
+    <PackageReleaseNotes>Version 2.0 desde asp.net to core 2.0  con appWorks theme</PackageReleaseNotes>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\assets\bin\**" />
+    <Compile Remove="wwwroot\assets\vendorMat\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\assets\bin\**" />
+    <Content Remove="wwwroot\assets\vendorMat\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\assets\bin\**" />
+    <EmbeddedResource Remove="wwwroot\assets\vendorMat\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\assets\bin\**" />
+    <None Remove="wwwroot\assets\vendorMat\**" />
+    <None Remove="wwwroot\lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ArtController.cs" />
+    <Compile Remove="Views\Shared\_LayoutFullHigth.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\_LayoutFullHigth.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.1.0-preview1-final" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\task\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="ViewModels\task\" />
+    <Folder Include="editorial\" />
+    <Folder Include="wwwroot\assets\dist\css\formplugins\bootstrap-select\" />
+    <Folder Include="wwwroot\assets\dist\js\formplugins\bootstrap-select\" />
+    <Folder Include="wwwroot\assets\vendor\" />
+    <Folder Include="wwwroot\task\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\dist\css\app.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\datagrid\datatables\datatables.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\fa-brands.css.map" />
+    <None Include="wwwroot\assets\dist\css\fa-regular.css.map" />
+    <None Include="wwwroot\assets\dist\css\fa-solid.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\bootstrap-colorpicker\bootstrap-colorpicker.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\bootstrap-datepicker\bootstrap-datepicker.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\bootstrap-daterangepicker\bootstrap-daterangepicker.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\bootstrap-markdown\bootstrap-markdown.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\cropperjs\cropper.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\dropzone\dropzone.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\ion-rangeslider\ion-rangeslider.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\nouislider\nouislider.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\select2\select2.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\smartwizard\smartwizard.css.map" />
+    <None Include="wwwroot\assets\dist\css\formplugins\summernote\summernote.css.map" />
+    <None Include="wwwroot\assets\dist\css\miscellaneous\fullcalendar\fullcalendar.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\miscellaneous\jqvmap\jqvmap.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\miscellaneous\lightgallery\lightgallery.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\miscellaneous\reactions\reactions.css.map" />
+    <None Include="wwwroot\assets\dist\css\notifications\sweetalert2\sweetalert2.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\notifications\toastr\toastr.css.map" />
+    <None Include="wwwroot\assets\dist\css\page-invoice.css.map" />
+    <None Include="wwwroot\assets\dist\css\page-login.css.map" />
+    <None Include="wwwroot\assets\dist\css\statistics\c3\c3.css.map" />
+    <None Include="wwwroot\assets\dist\css\statistics\chartist\chartist.css.map" />
+    <None Include="wwwroot\assets\dist\css\statistics\chartjs\chartjs.css.map" />
+    <None Include="wwwroot\assets\dist\css\statistics\dygraph\dygraph.css.map" />
+    <None Include="wwwroot\assets\dist\css\theme-demo.css.map" />
+    <None Include="wwwroot\assets\dist\css\vendors.bundle.css.map" />
+    <None Include="wwwroot\assets\dist\css\_themes_TODO\cust-theme-1.css.map" />
+    <None Include="wwwroot\assets\dist\img\favicon\safari-pinned-tab.svg" />
+    <None Include="wwwroot\assets\dist\img\favicon\site.webmanifest" />
+    <None Include="wwwroot\assets\dist\img\logo-flat.svg" />
+    <None Include="wwwroot\assets\dist\img\logo-gradient.svg" />
+    <None Include="wwwroot\assets\dist\img\logo.svg" />
+    <None Include="wwwroot\assets\dist\img\svg\pattern-1.svg" />
+    <None Include="wwwroot\assets\dist\img\svg\pattern-2.svg" />
+    <None Include="wwwroot\assets\dist\img\svg\pattern-3.svg" />
+    <None Include="wwwroot\assets\dist\img\svg\pattern-4.svg" />
+    <None Include="wwwroot\assets\dist\js\app.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\datagrid\datatables\datatables.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\datagrid\datatables\datatables.export.js" />
+    <None Include="wwwroot\assets\dist\js\dependency\moment\moment.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\bootstrap-colorpicker\bootstrap-colorpicker.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\bootstrap-datepicker\bootstrap-datepicker.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\bootstrap-daterangepicker\bootstrap-daterangepicker.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\bootstrap-markdown\bootstrap-markdown.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\cropperjs\cropper.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\dropzone\dropzone.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\inputmask\inputmask.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\ion-rangeslider\ion-rangeslider.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\nouislider\nouislider.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\select2\select2.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\smartwizard\smartwizard.js" />
+    <None Include="wwwroot\assets\dist\js\formplugins\summernote\summernote.js" />
+    <None Include="wwwroot\assets\dist\js\holder.js" />
+    <None Include="wwwroot\assets\dist\js\i18n\i18n.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\fullcalendar\fullcalendar.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\jqvmap.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.algeria.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.argentina.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.brazil.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.canada.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.europe.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.france.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.germany.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.greece.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.iran.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.iraq.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.russia.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.tunisia.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.turkey.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\jqvmap\maps\jquery.vmap.usa.js" />
+    <None Include="wwwroot\assets\dist\js\miscellaneous\lightgallery\lightgallery.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\notifications\sweetalert2\sweetalert2.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\notifications\toastr\toastr.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\c3\c3.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\chartist\chartist.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\chartjs\chartjs.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\d3\d3.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\demo-data\demo-c3.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\demo-data\demo-data-dygraph.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\dygraph\dygraph.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\easypiechart\easypiechart.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\flot\flot.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\peity\peity.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\statistics\sparkline\sparkline.bundle.js" />
+    <None Include="wwwroot\assets\dist\js\vendors.bundle.js" />
+    <None Include="wwwroot\assets\dist\media\sound\bigbox.ogg" />
+    <None Include="wwwroot\assets\dist\media\sound\messagebox.ogg" />
+    <None Include="wwwroot\assets\dist\media\sound\smallbox.ogg" />
+    <None Include="wwwroot\assets\dist\media\sound\voice_alert.ogg" />
+    <None Include="wwwroot\assets\dist\media\sound\voice_off.ogg" />
+    <None Include="wwwroot\assets\dist\media\sound\voice_on.ogg" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-light-300.svg" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-light-300.woff2" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\assets\dist\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\assets\dist\webfonts\nextgen-icons.svg" />
+    <None Include="wwwroot\assets\dist\webfonts\nextgen-icons.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Account\Loginaw.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Layoutaw.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

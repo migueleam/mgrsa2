@@ -1,0 +1,260 @@
+﻿
+<!-- Modal -->
+<div class="modal modal-top fade" id="modalProfile">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 bg-ca-silver-lighter">
+                <h4 class="subheader-title text-ca-blue-darker ">
+                    <i class="subheader-icon fal fa-cog"></i> Profile
+                    <small>
+                        Personal info settings
+                    </small>
+                </h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+         
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <form id="EditProf">
+                            <input type="hidden" id="profileId" />
+                            <input type="hidden" id="loginId" />
+                            <input type="hidden" id="phProvInit" />
+
+                            <div class="form-group">
+                                <label class="form-label">Nombre</label>
+                                <input id="Nombre" class="form-control form-control-sm" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Usuario</label>
+                                <input id="UserName" class="form-control" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Email</label>
+                                <input ID="Email" class="form-control" disabled />
+                            </div>
+
+                            <div class="row my-1">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label for="Phone" class="form-label form-label-sm">Telefono</label>
+                                        <input id="Phone" class="form-control " placeholder="(999) 999-9999" data-mask="(999) 999-9999" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="Extension" class="form-label form-label-sm">Ext</label>
+                                        <input id="Extension" class="form-control " placeholder="999" data-mask="999" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    @*<div class="form-group">
+                                        <label class="form-label">Phone Providers</label>
+                                        <select id="PhProvx"
+                                                class="selectpicker form-control show-tick"
+                                                data-size="6"
+                                                data-live-search="true"
+                                                data-allow-clear="true"
+                                                data-style="btn-info"
+                                                title="phone providers..."
+                                                multiple
+                                                data-max-options="1"
+                                        >
+                                        </select>
+                                    </div>*@
+                                    <div id="divPhProv"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Twitter</label>
+                                <input id="twitter" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Facebook</label>
+                                <input id="facebook" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Instagram</label>
+                                <input id="instagram" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">LinkedIn</label>
+                                <input id="linkedIn" class="form-control" />
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-success btn-sm pull-right" id="btnUpdMyProf" onclick="let p = CommonG.CUpdMyProfile();"><i class="fal fa-save"></i> Save</button>
+                <button class="btn btn-sm btn-outline-danger pull-right" data-dismiss="modal"><i class="far fa-window-close"></i> Close</button>
+
+            </div>
+
+        </div>
+
+    </div><!-- /.modal-content -->
+
+</div><!-- /.modal-dialog -->
+<!-- Modal -->
+<div class="modal fade" id="modalAuthP">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 bg-ca-silver-lighter">
+
+                <h4 class="subheader-title text-ca-danger">
+                    <i class="subheader-icon fal fa-cog"></i>&nbsp; Password Update
+                    <small>
+                           Authorization Update
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row d-flex align-top">
+
+                    <div class="col">
+
+                        <form id="EditAuth">                                                                                
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Nuevo Password</label>
+                                <input id="NewAuth" type="password" class="form-control" required value="121212" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Confimar Nuevo Password</label>
+                                <input id="ConfAuth" type="password" class="form-control" required value="121212" />
+                            </div>
+                            
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-success btn-sm pull-right" id="btnUpdAuth" onclick="let p = CommonG.CUpdAuth();" ><span class="fal fa-save"></span> Save</button>
+                <button class="btn btn-default btn-sm pull-right" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+
+            </div>
+
+        </div>
+
+    </div><!-- /.modal-content -->
+
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+
+<div class="modal fade" id="modalSms">
+
+    <div class="modal-dialog modal-50">
+
+        <div class="modal-content">
+                       
+
+            <div class="modal-body">
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col bg-ca-blue-lighter text-white p-2 mb-2">
+                            <h6 class="modal-title">Text Messages</h6>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="toPhone" class="form-label  form-label-sm">To Phone</label>
+                                    <input id="toPhone" class="form-control form-control-sm" placeholder="(999) 999-9999" data-mask="(999) 999-9999" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 mt-2">
+                            <button type="button" class="btn btn-success btn-sm" onclick="CommonG.newMessage()" id="btnNewMsg">New Msg</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="smsText" class="form-label form-label-sm">Message</label>
+                                <textArea id="smsText" maxlength="500" rows="5" class="form-control"></textArea>
+                            </div>
+                        </div>
+                    </div>              
+
+
+                    <div class="row">
+                        <div class="col">
+
+                            <!--Dropzonejs using Bootstrap theme-->
+                            <!--Dropzonejs using Bootstrap theme-->
+                            <!--===================================================-->
+
+                            <div id="dropZone">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-primary2" id="btnGetFiles">Files IDs</button>*@
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="CommonG.sendMsgTxt()" id="btnSendMsg">Send Msg</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#btnUpdMyProf").on('click', function (event) {
+
+                event.preventDefault();
+                CommonG.CUpdMyProfile();
+
+            });
+
+         });
+
+    </script>
+
+}

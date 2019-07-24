@@ -1,0 +1,193 @@
+
+ $('#divAreas').html('');
+ let pxa = CommonG.RequestAjaxSelectPmt('/common/GetAreas', 'Areas', 'Areas Dist', 'divAreas', 'Area', 'AreaId', '', false, '', false, true, 'let px = RetG.GetRoutesSel(this);');
+ $('#AreaId').val('0');
+ $('#AreaId').trigger('change');
+
+RequestAjaxSelectPmt: function (url, descdata, proceso, divId, labelText, selectId, vdata, bgrupo, modalId, bmultiple, bwidth, onchange, oInicial) {
+        var dataSelect = [];
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: vdata,
+            async: false,
+            success: function (result) {
+                if (result !== '') {
+                    //var px = CommonG.Message('ok|Datos de ' + descdata + ' leidas|' + proceso);
+                    dataSelect = CommonG.CrearMatriz(result, false);
+                    var px = CommonG.populateSelect(divId, labelText, selectId, dataSelect, bgrupo, modalId, bmultiple, bwidth, onchange, oInicial);
+
+                }
+                else {
+                    var px2 = CommonG.Message('wn|Datos de ' + descdata + ' NO leidas|' + proceso);
+                }
+            },
+            fail: function (result) {
+                var px3 = CommonG.Message('wn|Datos de ' + descdata + ' NO leidas|' + proceso);
+            }
+        });
+ },
+
+populateSelect: function (divId, labelText, selectId, adata, bgrupo, modalId, bmultiple, bwidth, onchange, oInicial) {
+
+        if (adata === undefined) {
+            var px = CommonG.Message('er|' + divId + ": " + " datos no encotrados| Users Mgr");
+            return;
+        }
+
+        if (adata.length === 0) {
+            var px2 = CommonG.Message('er|' + divId + ": " + " datos no encotrados| Users Mgr");
+            return;
+        }
+
+        $('#' + divId).html = '';
+
+        var hSelect = "<label class='form-label form-label-sm'>" + labelText + "</label>";
+        hSelect += "<select id='" + selectId + "' class='select2 form-control form-control-sm' data-size='15' data-allow-clear='true'";
+
+        if (bmultiple) {
+            hSelect += "multiple";
+        }
+
+        if (bwidth !== undefined && bwidth) {
+            hSelect += " style='width:100%' ";
+        }
+
+        if (onchange !== undefined && onchange !== '') {
+            hSelect += " onchange = '" + onchange + "' ";
+        }
+
+        hSelect += '>'; //temp 041918 <option></option>';
+
+        var rows = adata.length;
+        var cols = adata[0].length;
+
+        //primer grupo
+        var group = "";
+        var opengroup = false;
+
+        for (var i = 0; i < rows; i++) {
+
+            if (group !== adata[i][1] && bgrupo) {
+                group = adata[i][1];
+                if (opengroup)
+                    hSelect += '</optgroup>';
+                hSelect += '<optgroup label="' + group + '"></optgroup>';
+                opengroup = true;
+            }
+
+            if (oInicial !== undefined && i === 0) {
+                hSelect += "<option value='" + oInicial.value + "'>" + oInicial.display + "</option>";
+            }
+
+            if (adata[i][2] === '0' && oInicial === undefined)
+                hSelect += "<option value='" + adata[i][4] + "'>" + adata[i][3] + "</option>";
+            else
+                hSelect += "<option value='" + adata[i][4] + "'>" + adata[i][3] + "</option>";
+
+        }
+        if (opengroup)
+            hSelect += '</optgroup>';
+
+        hSelect += "</select>";
+
+        $('#' + divId).html(hSelect);
+
+        if (modalId !== '') {
+            $('#' + selectId).select2({
+                placeholder: 'Select ' + labelText,
+                dropdownParent: $('#' + modalId)
+            });
+        }
+        else {
+            $('#' + selectId).select2({
+                placeholder: 'Select ' + labelText
+            });
+        }
+    },
+
+
+//OPCION....
+
+httpFetch('/prod/OrdDsgM'
+           , {
+                'Id': id
+            }
+            , 'DsgnsG.Populate'
+);
+
+ [HttpPost]
+ public IActionResult OrdDsgM([FromBody] ModelId model)
+ {
+           OrdenesDiseno ords = new OrdenesDiseno();
+            if (model.Id != 0)
+                ords.ordendis = _prodservices.GetOrdsDsgn(model.Id, "", "", "", "");
+
+            return Json(ords.ordendis);
+ }
+
+ public class ModelId
+    {
+        public ModelId()
+        {
+            this.Id = 0;
+        }
+        public int Id { get; set; }
+}
+
+async function fx(){
+	let response1 = await fetch(values..);
+	let json1 = await response1.json();
+	return json1 ?;
+}
+
+
+
+async function httpFetch(url, pmts, callback) {        
+        let response = await postData(url, pmts)       
+        .then(results => return results)
+	//console.log(results))
+        .catch(err => Mensaje(
+            {
+                typeMsg: 'er',
+                message: err,
+                title: '|Intranet'
+            })
+        );
+        return response;
+}
+
+
+function postData(url = ``, data = {}) {
+
+    // Default options are marked with *
+    let form_data = new FormData();
+    for (var key in data) {
+        form_data.append(key, data[key]);
+    }
+    
+    //Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+    return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        //mode: "same-origin", // no-cors, cors, *same-origin
+        //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        //credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json; charset=utf-8" //,
+            //"Content-Type": "application/x-www-form-urlencoded"
+            //"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            //,
+        },
+        //redirect: "follow", // manual, *follow, error
+        //referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses response to JSON
+}
+
+
+      
+
+
+

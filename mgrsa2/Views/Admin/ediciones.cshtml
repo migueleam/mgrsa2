@@ -1,0 +1,204 @@
+﻿@model Ediciones
+
+@{
+    ViewBag.Title = "EAM-Ediciones";
+}
+
+
+    <div class="row">
+        <div class="col">
+            <div class="panel">
+
+                <div class="panel-container show p-md-5">
+
+                    @if (Model.ediciones.Count() == 0)
+                    {
+                        <div class="card">
+                            <div class="card-body text-center bg-light">
+                                <i class="far fa-map-marker d-block display-3"></i>
+                            </div>
+                            <div class="p-1 text-center">
+                                <p class="text-semibold text-lg text-main text-uppercase">EDICIONES</p>
+                                <p class="display-4">0</p>
+                                <p class="text-tiny pt-1">
+                                    <span class="text-bold">NO</span> datos encontrados
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <table id="tbEds" class="table table-hover table-striped w-100 table-no-bordered" style="width:100%">
+                            <thead class="bg-primary-50">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Edición</th>
+                                    <th>Fecha</th>
+                                    <th>Fecha Aviso</th>
+                                    <th>Hora Aviso</th>
+                                    <th>Fecha Cierre</th>
+                                    <th>Hora Cierre</th>
+                                    <th>Edicion Actual</th>
+                                    <th>ed/vw</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbRows">
+                                @foreach (Edicion edi in Model.ediciones)
+                                {
+                                    <tr>
+                                        <td>@edi.EdicionId</td>
+                                        <td>@edi.edicion</td>
+                                        <td>@edi.Fecha</td>
+                                        <td>@edi.FechaAviso</td>
+                                        <td>@edi.HoraAviso</td>
+                                        <td>@edi.FechaCierre</td>
+                                        <td>@edi.HoraCierre</td>
+
+                                        <td>@edi.edActual</td>
+                                        <td>
+                                               <button class="btn btn-xs btn-info" data-toggle="modal" href="#modalEdi" data-edicionid="@edi.EdicionId"><i class="fal fa-pencil"></i></button>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+
+
+                        </table>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade show" id="modalEdi" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-ca-silver-transparent-8">
+
+                <h4 class="modal-title text-ca-pink ">
+                    <i class="fal fa-calendar"></i>
+                    Edicion
+                    <small class="m-0 text-muted" id="disTitle">
+                        Edicion 
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+
+
+            </div>
+
+            <div class="modal-body bg-ca">
+
+                <div class="row">
+
+                    <div class="col">
+
+
+                        @*<form id="frmVwEd">
+                            <input type="text" id="b-m-dtp-date" class="form-control fechaM" placeholder="fecha">
+                        *@
+                        <div class="form-group">
+                            <label for="EdicionId" class="form-label form-label-sm">Edicion Id</label>
+                            <input id="EdicionId" class="form-control" disabled />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Edicion" class="form-label form-label-sm">Edicion</label>
+                            <input id="Edicion" class="form-control" disabled />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Fecha" class="form-label form-label-sm">Fecha Publicación</label>
+                            <input id="Fecha" class="form-control fechaM" placeholder="Date" disabled />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="FechaAviso" class="form-label form-label-sm">Fecha Limite Aviso</label>
+                            <input id="FechaAviso" class="form-control fechaM" placeholder="Fecha" />
+
+                        </div>
+
+                        <div class="form-group bootstrap-timepicker timepicker">
+                            <label for="HoraAviso" class="form-label form-label-sm">Hora Limite Aviso</label>
+                            <input id="HoraAviso" type="text" class="form-control hora" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="FechaCierre" class="form-label form-label-sm">Fecha Limite Definitiva</label>
+                            <input class="form-control fechaM" id="FechaCierre" type='text' />
+                        </div>
+
+                        <div class="form-group bootstrap-timepicker timepicker">
+                            <label for="HoraCierre" class="form-label form-label-sm">Hora Limite Definitiva</label>
+                            <input id="HoraCierre" type="text" class="form-control hora" />
+                        </div>
+
+                        @*</form>*@
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer pull-right">
+                <button class="btn btn-success btn-sm" id="btnUpdate"><span class="fa fa-save"></span> Save</button>&nbsp;
+                <button class="btn btn-default btn-sm" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+            </div>
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+@section scripts{
+
+
+    <script src="~/assets/jseam/edicion.js" asp-append-version="true"></script>
+
+    <script>
+
+    $(document).ready(function () {
+
+    PageTitle('pageTitle', 'fa-2x fal fa-calendar-alt', `Editions<strong class="text-danger">
+                                                        (actual: @(Model.response.message.Split('|')[3]) )
+                                        </strong>`, 'Publication Dates');
+        
+        /*
+    $('.horaM').bootstrapMaterialDatePicker({
+    date: false,
+    shortTime: true,
+    format: 'h:mm A'
+    });
+
+    $('.fechaM').bootstrapMaterialDatePicker({
+    weekStart: 0,
+    time: false,
+    clearButton: true,
+    format: 'MM/DD/YYYY'
+    });
+    */
+
+    $("#" + EdsG.settingsTable.id).DataTable(EdsG.settingsTable.config);        
+    EdsG.bindUIActions();
+
+
+    });
+
+    </script>
+
+}
+
+
+

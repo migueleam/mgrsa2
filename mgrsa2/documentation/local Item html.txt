@@ -1,0 +1,270 @@
+<!-- Modal -->
+<div class="modal fade" id="modalItem" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnClose">
+                    &times;
+                </button>
+                <h4 class="modal-title text-mint" id="itmTitle"></h4>
+            </div>
+            <div class="modal-body gray-bg">
+
+                <div class="row">
+
+                    <input id="slId" type="hidden" />
+                    <input id="locationid" type="hidden" />
+
+                    @*
+                        <div class="form-group">
+                            <label for="locationid" class="control-label">Location Id</label>
+                            <input id="locationid" class="form-control input-sm" disabled type="hidden" />
+                        </div>
+                    *@
+
+                    <div class="form-group">
+                        <div id="divLocales"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion" class="control-label">Local</label>
+                        <input id="descripcion" class="form-control input-sm text-uppercase" required />
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="address" class="control-label">Direccion</label>
+                        <input id="address" class="form-control input-sm text-uppercase" required />
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-8">
+                            <label for="city" class="control-label">City</label>
+                            <input id="city" class="form-control input-sm text-uppercase" required />
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="zip" class="control-label">Zip</label>
+                            <input id="zip" class="form-control input-sm text-uppercase" required type="number" />
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <div class="form-group col-sm-4">
+                        <div id="selTipoUbicacion">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-sm-4">
+                        <label for="qty" class="control-label">Draw Inicial</label>
+                        <input id="qty" class="form-control input-sm text-uppercase" type="number" required />
+                    </div>
+
+                        @*
+            <div class="form-group col-sm-4">
+                <label for="orden" class="control-label">Orden</label>
+                <input id="orden" class="form-control input-sm text-uppercase" type="number" />
+            </div>*@
+
+                    </div>
+                    @*
+        <div class="row">
+                <div class="form-group col-sm-4">
+                    <label class="control-label">Activa</label>
+                    <div class="checkbox">
+                        <input id="active" class="magic-checkbox" type="checkbox">
+                        <label for="active"></label>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div id="selEdDeactive"></div>
+                </div>
+              <div class="form-group col-sm-4">
+                    <label class="control-label">Veficada</label>
+                    <div class="checkbox">
+                        <input id="verify" class="magic-checkbox" type="checkbox">
+                        <label for="verify"></label>
+                    </div>
+                </div>
+        </div>
+                    *@
+                    <div class="form-group">
+                        <label for="notes" class="control-label text-danger">NOTAS</label>
+                        <textarea id="notes" class="form-control input-sm text-primary text-semibold" rows="3"></textarea>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-sm-4">
+                            <label for="latitude" class="control-label">Latitude</label>
+                            <input id="latitude" class="form-control input-sm text-uppercase" type="number" step="any" />
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="longitude" class="control-label">Longitude</label>
+                            <input id="longitude" class="form-control input-sm text-uppercase" type="number" step="any" />
+                        </div>
+
+                        <div class="col-sm-4 text-center">
+                            <p><br /></p>
+                            <a class="btn btn-danger btn-xs" id="btnCoordinates" onclick="var xloc = CommonG.GetCoord('address','city','zip','latitude','longitude');">
+                                <i class="fa fa-map-marker"></i> Coordinates
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+                        <a class="btn btn-success btn-sm" id="btnSave"><i class="fa fa-save"></i> Guardar</a>
+                        <a class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close" id="btnCloseB"></i> Close</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<!-- /.modal-dialog -->
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="modalItem" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnClose">
+                    &times;
+                </button>
+                <h4 class="modal-title text-mint" id="itmTitle"></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-body gray-bg">
+
+                        <input id="slId" type="hidden" />
+
+                        <div class="form-group">
+                            <label for="locationid" class="control-label">Location Id</label>
+                            <input id="locationid" class="form-control input-sm" disabled />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <label for="descripcion" class="control-label">Local</label>
+                                    <input id="descripcion" class="form-control input-sm text-uppercase" required />
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-info btn-sm" id="btnSearchDesc"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>                           
+                           
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <label for="address" class="control-label">Direccion</label>
+                                    <input id="address" class="form-control input-sm text-uppercase" required />
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-info btn-sm" id="btnSearchAddress"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-sm-8">
+                                <label for="city" class="control-label">City</label>
+                                <input id="city" class="form-control input-sm text-uppercase" required />
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="zip" class="control-label">Zip</label>
+                                <input id="zip" class="form-control input-sm text-uppercase" required type="number" />
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-sm-4">
+                                <div id="selTipoUbicacion">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-sm-4">
+                                <label for="qty" class="control-label">Default Qty</label>
+                                <input id="qty" class="form-control input-sm text-uppercase" type="number" required />
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="orden" class="control-label">Orden</label>
+                                <input id="orden" class="form-control input-sm text-uppercase" type="number" />
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label class="control-label">Activa</label>
+                                <div class="checkbox">
+                                    <input id="active" class="magic-checkbox" type="checkbox">
+                                    <label for="active"></label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div id="selEdDeactive"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-sm-4">
+                                <label for="latitude" class="control-label">Latitude</label>
+                                <input id="latitude" class="form-control input-sm text-uppercase" type="number" step="any" />
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="longitude" class="control-label">Longitude</label>
+                                <input id="longitude" class="form-control input-sm text-uppercase" type="number" step="any" />
+                            </div>
+
+                            <div class="col-sm-4 text-center">
+                                <p><br /></p>
+                                <a class="btn btn-pink btn-xs" id="btnCoordinates" onclick="var xloc = CommonG.GetCoord('address','city','zip','latitude','longitude');">
+                                    <i class="fa fa-map-marker"></i> Coordinates
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pull-right">
+                            <a class="btn btn-success btn-sm" id="btnSave"><i class="fa fa-save"></i> Guardar</a>
+                            <a class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close" id="btnCloseB"></i> Close</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<!-- /.modal-dialog -->
+

@@ -1,0 +1,13 @@
+﻿
+@using mgrsa2.Services
+@using mgrsa2.ViewModels
+@using mgrsa2.Models
+@using Microsoft.AspNetCore.Identity
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper mgrsa2.Infrastructure.*, Users
+
+@inject IUserServices userservices
+@inject IAdminServices adminservices
+@inject ICommonServices commonservices
+@inject IAuxServices auxservices

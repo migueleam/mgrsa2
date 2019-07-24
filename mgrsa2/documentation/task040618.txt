@@ -1,0 +1,28 @@
+
+TASKS: 04/06/2018
+
+	1. Quitar o no usar QTY en location 
+	Debera usarse Draw de ScheduleLocation, 
+      	No se usa qty o ret de ScheduleLocation...	
+
+   	ok 2. Activo o No activo sera en ScheduleLocation  
+		al hacer busquedas de Estadisticas de Location es a traves de ScheduleLocation.SlId-Eventos.SlId NO importando si esta activo o no...
+	   ademas quitar desde: edicion...
+
+ 	ok 3. Al poner Activo y No activa de location es en ScheduleLocation...		
+		
+	ok 4. Revisar Select-Combos de Routes (infobasica) que dara Schedules...
+
+	5. ADICION DE local en Return debera de ser en base a existentes...y buscar por nombre, y seleccionar...or adicionarla si no existe...
+
+	6. Llenado de Rutas...(opcion...)
+		
+		Seleccionar AREA, RUTA, SCHEDULE...CRITERIO DE LOCALES...(NOMBRE, CALLE, CIUDAD, ZIP)...								
+
+		A.
+				
+		 PRIMERO SELECCIONAR RUTA (SCHEDULE O HORARIO)
+				
+		Button para pasar loc a Ruta...(nueva) ? (
+		quizas desde locales ????
+		

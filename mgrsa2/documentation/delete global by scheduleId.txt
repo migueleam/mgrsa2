@@ -1,0 +1,14 @@
+
+UPDATE dbo.dist_ScheduleLocation 
+	set Activa = 0
+	where scheduleID = 29 AND Orden >= 166
+
+
+	DELETE FROM dbo.dist_Evento
+	WHERE eventoID IN 
+	(	
+	SELECT e2.eventoID
+	from dbo.dist_Evento e2
+	inner join dbo.dist_ScheduleLocation sl  ON e2.locationscheduleID = sl.locationScheduleID
+	where e2.Edicion = '201814' AND sl.scheduleID = 23
+	)

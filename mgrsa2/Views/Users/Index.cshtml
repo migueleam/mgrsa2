@@ -1,0 +1,496 @@
+﻿@model UsersProfiles
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+@section styles{}
+
+
+    <div class="row">
+        <div class="col  py-1 text-right">
+            <button class="btn btn-success btn-sm " data-toggle="modal" href="#modalAuthNew" data-userid="0">
+                <i class="fas fa-plus"></i> Nuevo User
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  
+                    <div id="divUsers"></div>
+                   
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade show" id="modalAuth" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-ca-silver-transparent-8">
+
+                <h4 class="modal-title text-ca-red-lighter" >
+                    <i class="fal fa-user-cog"></i>
+                    AUTHORIZATION 
+                    <small class="m-0 text-muted" id="disTitleA">
+                        Users profile
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+
+                
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <form id="Edit">
+
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Id</label>
+                                <input id="Id" class="form-control form-control-sm" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Codigo</label>
+                                <input id="Codigo" class="form-control form-control-sm" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Nombre</label>
+                                <input id="NombreA" class="form-control form-control-sm" disabled />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Usuario</label>
+                                <input id="UserNameA" class="form-control form-control-sm" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Email</label>
+                                <input ID="EmailA" class="form-control form-control-sm" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Password</label>
+                                <input id="Password" type="password" class="form-control form-control-sm" required placeholder="******" />                             
+                            </div>
+
+                        </form>
+                                                                       
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-success btn-sm pull-right" id="btnUpdate"><span class="fa fa-save"></span> Save</button>
+                <button class="btn btn-outline-danger btn-sm pull-right" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+
+            </div>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+<!-- Modal -->
+
+<div class="modal fade show" id="modalAuthNew" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header bg-ca-silver-transparent-8">
+                <h4 class="modal-title text-ca-blue-darker">
+                    <i class="fal fa-user-plus"></i>
+                    NEW USER
+                    <small class="m-0 text-muted"  id="disTitleNew">
+                        Users Authentication
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+               
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <form id="AddUser">
+
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Nombre</label>
+                                <input id="NombreNew" class="form-control form-control-sm" required />
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <label class="form-label form-label-sm">Codigo</label>
+                                        <input id="CodigoNew" class="form-control form-control-sm" placeholder="000AAAA" maxlength="7" required />
+                                    </div>
+
+                                    <div class="col-md-6 m-2">
+                                        <div id="divcodigos"></div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="custom-control  custom-control-sm custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="chkSales">
+                                                <span class="custom-control-label">Ventas</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       
+                                        <select class="select2 form-control form-control-sm" style="width: 100%" id="OfAdcr">
+                                            <option value="1" selected>Principal</option>
+                                            <option value="4">San Fernando</option>
+                                            <option value="5">Orange Couty</option>
+                                            <option value="6">Inland Empire</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Usuario</label>
+                                <input id="UserNameNew" class="form-control form-control-sm" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label form-label-sm">Password</label>
+                                <input id="PasswordNew" class="form-control form-control-sm" required />
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-success btn-sm pull-right" id="btnSaveNew"><span class="fa fa-save"></span> Save</button>
+                <button class="btn btn-outline-danger btn-sm pull-right" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+
+            </div>
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade modal-fullscreen" tabindex="-1" role="dialog" aria-hidden="true" id="modalProf">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header bg-ca-silver-transparent-8">
+                <h4 class="modal-title text-ca-blue-darker">
+                    <i class="fal fa-cog"></i>
+                    PROFILE
+                    <small class="m-0 text-muted" id="profTitleP">
+                        Users profile
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="d-flex flex-column h-100">
+                    <div class="h-auto">
+
+                        <div class="nav-tabs-top">
+
+                            <ul class="nav nav-tabs">
+
+                                <li class="nav-item">
+                                    <a class="nav-link  active" data-toggle="tab" href="#navs-top-profile">
+                                        <i class="fal fa-cog"></i>&nbsp; Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#navs-top-roles">
+                                        <i class="fal fa-cog"></i>&nbsp;
+                                        Roles
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#navs-top-tarj">
+                                        <i class="fal fa-credit-card"></i>&nbsp;
+                                        Tarjetas de entrada
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="navs-top-profile">
+
+                                    <div class="p-3">
+                                        <div class="card bg-ca-silver-transparent-8">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+
+                                                        <input id="userId" class="form-control " type="hidden" />
+                                                        <input id="loginId" class="form-control form-control-sm" type="hidden" />
+
+                                                        <div class="form-group">
+                                                            <label for="ProfileIdPf" class="form-label form-label-sm">Profile Id</label>
+                                                            <input id="ProfileIdPf" class="form-control form-control-sm" disabled />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="CodigoPf" class="form-label form-label-sm">Codigo</label>
+                                                            <input id="CodigoPf" class="form-control  form-control-sm text-uppercase" disabled />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="UserNamePf" class="form-label form-label-sm">Usuario</label>
+                                                            <input id="UserNamePf" class="form-control form-control-sm" disabled />
+                                                        </div>
+
+                                                        <div class="form-group ">
+                                                            <label for="EmailPf" class="form-label form-label-sm">Email</label>
+                                                            <input id="EmailPf" class="form-control form-control-sm" disabled />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="twitterPf" class="form-label form-label-sm">twitter</label>
+                                                            <input id="twitterPf" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label form="facebookPf" class="form-label form-label-sm">facebook</label>
+                                                            <input id="facebookPf" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="instagramPf" class="form-label form-label-sm">instagram</label>
+                                                            <input id="instagramPf" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="linkedInPf" class="form-label form-label-sm">linkedIn</label>
+                                                            <input id="linkedInPf" class="form-control form-control-sm" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-1"></div>
+                                                    <div class="col-sm-6">
+
+                                                        <div class="custom-control custom-checkbox custom-checkbox-circle custom-control-inline">
+                                                            <input type="checkbox" class="custom-control-input" id="ActivePf"> 
+                                                            <label class="custom-control-label" for="ActivePf">Activo</label>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="NombrePf" class="form-label form-label-sm">Nombre</label>
+                                                            <input id="NombrePf" class="form-control form-control-sm" />
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <div id="divSupervisor"></div>
+                                                        </div>
+
+
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <div class="form-group">
+                                                                    <label for="PhonePf" class="form-label form-label-sm">Telefono</label>
+                                                                    <input id="PhonePf" class="form-control form-control-sm" placeholder="(999) 999-9999" data-mask="(999) 999-9999" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group">
+                                                                    <label for="ExtensionPf" class="form-label form-label-sm">Ext</label>
+                                                                    <input id="ExtensionPf" class="form-control form-control-sm" placeholder="999" data-mask="999" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <div id="divPhProveedores"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div id="divContactosPerm" class="p-sm"></div>
+                                                        </div>
+
+                                                        <div class="form-group text-right">
+                                                            <button class="btn btn-success btn-sm" id="btnUpdatePf"><span class="fa fa-save"></span> Actualizar</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="navs-top-roles">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <div class="card  bg-ca-silver-transparent-8">
+
+
+                                                    <div class="card-body">
+
+                                                        <div class="row">
+
+                                                            <div class="form-group col-sm-5">
+                                                                <div id="divRolesId"></div>
+                                                            </div>
+
+                                                            <div class="col-sm-1 p-4">
+                                                                <button class="btn btn-sm btn-info activeRoles pull-right" id="newRoles" onclick="var r = RolesG.NewRoles();"><span class="fa fa-plus"></span> Add Role</button>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div id="divRoles">
+                                                                    <!--table data-tableRoles-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="navs-top-tarj">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card bg-ca-silver-transparent-8">
+
+
+                                                    <div class="card-body">
+
+                                                        <div class="row col">
+
+                                                            <div class="col-sm-1">
+                                                                <label for="card" class="form-label form-label-sm">Tarj Num</label>
+                                                            </div>
+                                                            <div class="form-group col-sm-3">
+
+                                                                <input type="text" id="card" name="card" class="form-control form-control-sm entrycard" required data-mask="9999999999" />
+
+                                                            </div>
+                                                            <div class="col-sm-1"><button class="btn btn-sm btn-info" id="newCard" onclick="var er = EntryCardsG.NewCard(this);"><span class="fa fa-plus"></span> Add</button></div>
+                                                            <div class="col-sm-1"><button class="btn btn-sm btn-outline-danger cancelCard" id="cancelNewCard" onclick="var er = EntryCardsG.CancelNewCard(this);"><span class="fa fa-close"></span>  Cancel</button></div>
+
+                                                        </div>
+
+                                                        <div class="row">
+
+                                                            <div class="col-sm-6">
+                                                                <div id="divEntryCards"></div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                        @*<a class="btn btn-success btn-sm" id="btnSaveProf"><span class="fa fa-save"></span> Actualizar</a>*@
+                        <buton class="btn btn-outline-danger btn-sm" data-dismiss="modal"><i class="fa fa-close" id="btnCloseB"></i> Close</buton>
+            </div>
+       </div>
+
+            </div>
+    <!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal -->
+
+
+@section scripts{
+
+    <script src="~/assets/jseam/entrycards.js" asp-append-version="true"></script>
+    <script src="~/assets/jseam/roles.js" asp-append-version="true"></script>
+    <script src="~/assets/jseam/users.js" asp-append-version="true"></script>
+
+    <script>
+
+            $(document).ready(function () {
+
+
+            PageTitle('pageTitle', 'fa-2x fal fa-users', 'Usuers', 'Authorization and Authentication');
+
+
+            $("#" + UsersG.settingsTable.id).DataTable(UsersG.settingsTable.config);
+
+          
+            if ("@Model.resp.route[0].valor" !== "") {
+                  $('.dataTables_filter input').val(@Model.resp.route[0].valor);
+            }
+
+            let uinit = UsersG.bindUIActions();
+            let uinitr = RolesG.bindUIActions();
+                
+            //$('#phonecol').mask('(999) 999-9999');
+
+            let data =  @Html.Raw(Json.Serialize(@Model.usersprofiles));
+
+            UsersG.RefreshTb(data);
+
+        });
+
+    </script>
+
+}

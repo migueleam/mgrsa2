@@ -1,0 +1,10 @@
+FORMATOS  appWork
+
+//adicion de directorio 
+pages_chat.html
+
+pages_client.html...
+para mostrar right sidebar 
+
+complete-ui_charts.html
+maps

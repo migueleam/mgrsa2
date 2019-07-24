@@ -1,0 +1,74 @@
+﻿@model List<Profile>
+
+<div class="panel-group" id="accordion">
+
+
+    @if (Model.Count > 0)
+    {
+
+        @foreach (var dir in Model)
+        {
+
+            <div class="contacts-col col-12">
+                <div class="card mb-4 bg-white">
+                    <div class="card-body">
+                        <div class="contact-content">
+                            <div class="row">
+                                
+                                <div class="col-sm-3 mx-auto"><img src="~/assets/1_32.png" class="d-block ui-w-40 rounded-circle" alt=""></div>
+                                <div class="col-sm-9 mx-auto">
+                                    <div class="contact-content-about">
+                                        <h6 class="contact-content-name mb-1">
+                                            <a href="javascript:void(0)" class="text-dark">@dir.Nombre</a>
+                                        </h6>
+                                        <div class="small">
+                                            <span class="text-muted">ph: </span> <strong class="text-dark"> @dir.Phone</strong> <br />
+                                            <span class="text-muted">ex: </span> <strong class="text-danger"> @dir.Extension</strong>
+                                        </div>
+                                        <hr class="border-light">
+                                        <div>
+                                            <a href="mailto:@dir.Email?Subject=Desde%20Sistema de Administración" class="text-secondary">
+                                                <span class="ion ion-md-mail"></span>
+                                            </a> &nbsp;&nbsp;
+                                            <a href="javascript:void(0)" class="text-secondary">
+                                                <span class="ion ion-ios-chatbubbles"></span>
+                                            </a> &nbsp;&nbsp;
+                                            <span class="text-lighter">|</span> &nbsp;&nbsp;
+                                            <a href="javascript:void(0)" class="text-twitter">
+                                                <span class="ion ion-logo-twitter"></span>
+                                            </a> &nbsp;&nbsp;
+                                            <a href="javascript:void(0)" class="text-facebook">
+                                                <span class="ion ion-logo-facebook"></span>
+                                            </a> &nbsp;&nbsp;
+                                            <a href="javascript:void(0)" class="text-instagram">
+                                                <span class="ion ion-logo-instagram"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="mar-all">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-info fa-3x text-warning"></i>
+                </div>
+                <div class="py-5 text-center">
+                    <h2 class="text-uppercase">NO USUARIOS</h2>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "EAM-About";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+
+
+    <div class="row">
+        <div class="col-lg-8 col-xl-8 order-lg-1 order-xl-1 mx-auto m-5">
+            <!-- profile summary -->
+            <div class="card mb-g rounded-top">
+                <div class="row no-gutters row-grid">
+                    <div class="col-12">
+                        <div class="d-flex flex-column align-items-center justify-content-center p-4">
+
+                            <img src="~/assets/img/el aviso small.png" class="border-0 img-thumbnail" alt="" style="max-height:60px">
+
+                            <h5 class="mb-0 fw-700 text-center mt-3">
+                                EAM Manager System
+                                <small class="text-muted mb-0">ver 2.0 masl @@ 2019</small>
+                            </h5>
+                            <div class="mt-4 text-center">
+                                <div class="contact-content-user text-ca-purple h6 mb-2 font-bold">Auxiliar Information System</div>
+
+
+                            </div>
+
+
+
+                            <div class="mt-4 text-center demo">
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#3b5998">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#38A1F3">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#db3236">
+                                    <i class="fab fa-google-plus"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#0077B5">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                @*<a href="javascript:void(0);" class="fs-xl" style="color:#000000">
+                            <i class="fab fa-reddit-alien"></i>
+                        </a>*@
+                                <a href="javascript:void(0);" class="fs-xl" style="color:#00AFF0">
+                                    <i class="fab fa-skype"></i>
+                                </a>
+                                @*<a href="javascript:void(0);" class="fs-xl" style="color:#0063DC">
+                            <i class="fab fa-flickr"></i>
+                        </a>*@
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+                <div class="row no-gutters row-grid p-5 text-center">
+                    <div class="col-sm-4 border-dark">
+                        <div class="small">version</div>
+                        <strong class="text-ca-purple-darker">net core 2.0</strong>
+                    </div>
+                    <div class="col-sm-4 border-dark">
+                        <div class="small">language</div>
+                        <strong class="text-ca-purple-darker">c#</strong>
+                    </div>
+
+                    <div class="col-sm-4 px-2 border-dark">
+                        <div class="small">progress</div>
+                        <div class="progress my-3">
+                            <div class="progress-bar bg-ca-purple-darker" style="width:35%" title="35% advance"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+            PageTitle('pageTitle', 'fa-2x fal fa-info', 'Home', 'About System');  
+
+
+        });
+    </script>
+
+}

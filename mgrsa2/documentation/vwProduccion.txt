@@ -1,0 +1,68 @@
+SELECT     TOP (100) PERCENT 
+f.ID
+, a.awEdition
+, a.awEditionID
+, a.awID
+, f.awStatus
+, a.awDate
+, a.awTime
+, a.awAgent
+, a.awTitle
+, a.awCodeAd
+, a.awType
+, a.awArea
+, a.awEstilo
+, a.awStamp
+, a.awEntAgent
+, a.awEntDate
+, a.awEntTime
+, a.awAvMsDate
+, a.awAvMsTime
+, a.awAviso
+, a.awMessage
+, a.awAgentCod
+, a.awEntToAgentCod
+, a.awEntPorAgentCod
+, a.AdCodeA1
+, a.AdCodeA2
+, a.AdCodeA3
+, a.AdCodeA4
+, a.AdCodeA5
+, a.AdCodeA6
+, a.AdCodeA7
+, a.AdCodeA8
+, a.AdCodeA9
+, a.AdCodeA6E
+, a.AdCodeA6W
+, a.AdInfoCompleta
+, a.AdContratado
+, a.AdNotes
+, a.AdDeleted
+, a.AdEditStamp
+, a.AdEditCod
+, l.lastID
+, f.awDate AS movDate
+, f.awTime AS movTime
+, f.AvAgenteTo AS codIN
+, f.AvAgenteFrom AS codOUT
+, f.Notes
+, f.file1, f.file2, f.file3, f.file4, f.file5, f.file6, f.file7, f.file8, f.file9, f.file10
+, f.stamp
+, f.editStamp
+, f.editAgente
+, elaviso.aw_tblStatus.awStatusLabel AS movStatus
+, dbo.tblLogins.LoginUserID AS userIN
+, tblLogins_1.LoginUserID AS userOUT
+, a.awDisenador AS disenador
+, tblLogins_2.LoginCagCodigo AS disUserID
+, f.revisada
+, 0 AS MovTotales
+, 0 AS MovReq
+, 0 AS MovRealizados
+FROM        elaviso.aw_tblArtWork AS a 
+INNER JOIN  dbo.vw_awFU_LastStatus AS l ON a.awID = l.awID 
+INNER JOIN  dbo.aw_tblArtWorkFU AS f ON l.lastID = f.ID 
+INNER JOIN  dbo.tblLogins ON f.AvAgenteTo = dbo.tblLogins.LoginCagCodigo 
+INNER JOIN  dbo.tblLogins AS tblLogins_1 ON f.AvAgenteFrom = tblLogins_1.LoginCagCodigo LEFT OUTER JOIN  dbo.tblLogins AS tblLogins_2 ON a.awDisenador = blLogins_2.LoginUserID LEFT OUTER JOIN
+                  elaviso.aw_tblStatus ON f.awStatus = elaviso.aw_tblStatus.awStatusID
+ORDER BY a.awID DESC

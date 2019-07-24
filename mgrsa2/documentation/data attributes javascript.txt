@@ -1,0 +1,8 @@
+	
+	 let valueAnt = obj.getAttribute('data-vant'); 
+        let evId = obj.getAttribute('data-evId'); 
+        
+        //obj.setAttribute('data-vant', 'value');
+
+        //other $.data(obj, 'vant','x');
+        // get $(obj).data('vant');
